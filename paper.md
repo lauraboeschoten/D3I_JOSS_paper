@@ -48,16 +48,16 @@ bibliography: paper.bib
 
 *A summary describing the high-level functionality and purpose of the software for a diverse, non-specialist audience.*
 
-Recently, a new workflow was introduced that allows research participants to donate their digital trace data for research [@boeschoten2022framework]. In this workflow, the digital traces of participants are processed locally on their own devices prior to providing informed consent to share the relevant features with the researchers. 
+Recently, a new workflow was introduced that allows research participants to donate their digital trace data for research [@boeschoten2022framework]. In this workflow, the digital traces of participants are processed locally on their own devices in such a way that only those features are shared that are of interest to the researcher. 
 
 This *data donation workflow* consists of the following steps: First the participant requests a digital copy of their personal data at the platform of interest. Second, they download it onto their personal device. Third, by means of *local processing*, only the features of interest to the researcher are extracted from that DDP. Fourth, the participant inspects the extracted features after which they can consent to donate. Only after providing this consent, the donated data is sent to a server which can be accessed by the researcher for further analyses. 
 
-In this paper, we introduce D3I. D3I is a software tool that allows researchers to configure the local processing step of the data donation workflow, allowing the researcher to collect exactly the digital traces needed to answer their research question. With D3I, a researcher decides: 
+In this paper, we introduce PORT. PORT is a software tool that allows researchers to configure the local processing step of the data donation workflow, allowing the researcher to collect exactly the digital traces needed to answer their research question. When using PORT, a researcher can decide: 
 
-- What is communicated to the participant.
 - Which digital platforms are being investigated.
 - Which digital traces are collected exactly. 
 - How the extracted data is visualized.
+- What is communicated to the participant.
 - Where to store the extracted data. 
 
 
@@ -65,75 +65,62 @@ In this paper, we introduce D3I. D3I is a software tool that allows researchers 
 
 *A Statement of need section that clearly illustrates the research purpose of the software and places it in the context of related work.*
 
-In our everyday lives, we leave more and more digital traces behind. Whether we like a post on Instagram, or an send a message on WhatsApp. Even when we check-in at public transportation, or when we do a bank transaction we leave behind a digital trace. The promise of digital humanities and computational social science has been that researchers can utilize these digital traces to study humam behavior and interaction at an unprecendented level of detail [@king2011ensuring]. 
+In our everyday lives, we leave more and more digital traces behind. Whether we like a post on Instagram, or send a message on WhatsApp. Even when we check-in at public transportation, or when we do a bank transaction we leave behind a digital trace. The promise of digital humanities and computational social science has been that researchers can utilize these digital traces to study human behavior and interaction at an unprecendented level of detail [@king2011ensuring]. 
 
 However, while the amount of digital trace data increases, most are closed off in proprietary archives of commercial corporations, with only a subset being available to a small set of elite researchers at a platform's discretion, through initiatives such as Social Science One [@king2020new]), or through increasingly restricted and opaque APIs [@bruns2019after; @freelon2018computational; @perriam2020digital].
 
 An alternative approach to gain access to digital traces is enabled thanks to the European Union's General Data Protection Regulations (GDPR) right to data access and data portability [@ausloos2019gdpr]. Thanks to this legislation, all data processing entities are required to provide citizens a digital copy of their personal data upon request, which typically come in the form of .zip files to which we refer as *Data Download Packages* (DDPs).
 
-This allows researchers to invite participants to share their DDPs. A major challenge is however that DDPs potentially contain very sensitive data, and often not all data is needed to answer the specific research question under investigation. To circumvent these challenges, @boeschoten2022framework developed an alternative workflow:  First, the research participant requests their personal DDP at the platform of interest. Second, they download in onto their own personal device. Third, by means of local processing, only the features of interest to the researcher are extracted from that DDP. Fourth, the participant inspects the extracted features after which they can consent (or decline) to donate. Only after providing this consent, the donated data is sent to a server which can be accessed by the researcher for further analyses. 
+This allows researchers to invite participants to share their DDPs. A major challenge is however that DDPs potentially contain very sensitive data, and often not all data is needed to answer the specific research question under investigation. To circumvent these challenges, @boeschoten2022framework developed an alternative workflow:  First, the research participant requests their personal DDP at the platform of interest. Second, they download in onto their own personal device. Third, by means of local processing, only the features of interest to the researcher are extracted from that DDP. Fourth, the participant inspects the extracted features after which they can consent (or decline) to donate. Only after providing this consent, the donated data is sent to a server which can be accessed by the researcher for further analyses. See \autoref{fig:workflow} for an overview of these steps.
 
-**Insert plaatje data donatie flow**
+![An overview of the data donation workflow as presented by @boeschoten2022framework.\label{fig:workflow}](figure_workflow.jpg)
 
-In the last years, researchers have used multiple approaches to deal with the privacy issues related to donation of DDPs. For example, @van2022promises requested participants to share their complete Instagram DDPs, which were immediately de-identified prior to further analyses [@boeschoten2021automatic]. @kmetty2022your requested participants to visit a research site, where they downloaded their DDPs which were then de-identified under the participant's supervision. @araujo2022osd2f developed software that allows for the participants to decide per data instance within a DDP whether they want to delete it prior to donation. @boeschoten2022privacy introduce a proof-of-concept of software that allows for local processing of DDPs, resulting in aggregated, de-identified data. Although especially OSD2F and PORT are promising pieces of software, they know a number of drawbacks in it's current form. While OSD2F is relatively easy to configure, it lacks the flexibility to further process the data from DDPs. Although PORT provides this feature, it is very challenging for a researcher to configure a study using PORT without extensive programming knowledge.
+In the last years, researchers have used multiple approaches to deal with the privacy issues related to donation of DDPs. For example, @van2022promises requested participants to share their complete Instagram DDPs, which were immediately de-identified prior to further analyses [@boeschoten2021automatic]. @kmetty2022your requested participants to visit a research site, where they downloaded their DDPs which were then de-identified under the participant's supervision. @araujo2022osd2f developed software that allows for the participants to decide per data instance within a DDP whether they want to delete it prior to donation. @boeschoten2022privacy introduced a proof-of-concept of the software PORT, allowing for local processing of DDPs which results in aggregated, de-identified data. 
 
-In this paper, we introduce D3I, an open-source software tool that combines the most useful features from both PORT and OSD2F. With D3I, any researcher can fully configure their own data donation study. It creates a website that guides participants through the data donation steps. Researchers can tailor this website to their own DDP(s) of interest on process these in their desired way, making use of functionalities that have been previously developed for PORT and OSD2F. 
+In this paper, we introduce a new version of PORT. It is open-source and allows for researchers to fully configure their own data donation study. It creates a website that guides participants through the data donation steps. Researchers can tailor this website to their own DDP(s) of interest and process these in their desired ways. In addition to local processing, key features from OSD2F are also integrated, allowing participants to decide per data instance whether they want to delete it. 
 
 
 # Features
 
-D3I enables researchers to configure their own data donation flow, tailored to to the needs of their study. This allows the researcher to collect exactly those digital traces needed to answer their research question, without any unnecessary bycatch. 
+D3I enables researchers to configure their own data donation flow, tailored to to the needs of their study. This allows the researcher to collect exactly those digital traces needed to answer their research question, without any unnecessary by catch. 
 
 In order to configure a tailored data donation flow, D3I allows for a researcher to configure the elements described below.
 
-### Study information 
 
-Data donation is often part of a larger study design, in which researchers inform participants about the study purpose, ask for informed consent and potentially also include other approaches for data collection, such as a questionnaire. 
+### The Data Download Packages (DDPs)
 
-Important for the data donation element are the explanations regarding data requests and data downloads at the platforms of interest, information regarding privacy and contact and all the communication that guides participants through the data donation procedure that is present on the website. 
+D3I is platform agnostic, DDPs of any platform can be used. It is also possible to incorporate donations of DDPs from multiple platforms. In that case, the researcher considers the order in which the platforms are presented, and a 'skip' button can be placed, for example for participants who wish to not participate for the first platform, but who do want to participate for the second.
 
-The researcher can tailor all this information towards the level of their intended study population, and the platform(s) under study.
-
-**Niek, kun je hier iets zeggen over hoe je teksten kunt aanpassen? En misschien ook over hoe je naar losse documenten kunt linken?**
-
-Almost all text related to the data donation flow (such as header texts, table texts, button texts, etc.) can be easily tailored by the researcher from within the data extraction and processing script. 
-Two language are supported by default, but this could be extented to multiple. 
-Also there is room for linking to external resources such as: download instructions, support and a privacy statement.
-Some texts need to be changed by directly altering html (such as the informed consent form). 
-This will most likely be subject to change, and be covered by a method of configuration.
+Although technically it is possible to include DDPs from as many platforms as desired by the researcher, it should be considered that adding more DDPs substantially increases the burden on participants.
 
 
-### The Data Download Package(s)
+### Data Donation Flow  
 
-D3I is platform agnostic, DDPs of any platform can be used. It is also possible to incorporate donations of DDPs from multiple platforms. In that case, the researcher considers the order in which the platforms are presented, and a `skip` button can be placed, for example for participants who wish to not participate for the first platform, but who do want to participate for the second.
+Both the data donation flow and the data extraction process are fully controlled by a Python script that runs locally in the browser of the participant. This Python script is written specifically for a research project, since it contains the custom data donation flow logic and it is tailored to the DDP(s) of interest, as such that it only extracts the features of interest to that specific study. 
 
-**Niek, kun je hier iets zeggen over hoe je dus extra instances van donatieschermen aan kunt maken?**
-**Antwoord: kom in het stukje Data extraction and processing, heb het kopje aangepast**
+To run a custom Python script, PORT makes use of [Pyodide](https://pyodide.org/en/stable/). Pyodide is a Python distribution for the browser based on [WebAssembly](https://webassembly.org/). Running the custom Python script using Pyodide in the browser of a participant works as follows: 
 
-The researcher can ask the participant for as many DDPs as they desire, however, this increases the burden on the participant significantly and should be done with careful consideration.
+* The Python script starts and begins to run synchronously, until: 
+  1. The script reaches a Python class resembling a UI element (a [React](https://reactjs.org/) component) that should be shown on screen. 
+  2. The script yields and communicates with the app which UI should be rendered on screen.
+  3. The participant interacts with the UI element (This is could be a prompt to submit file, a table where the participant can inspect their data, a multiple choice menu etc.).
+  4. The results from the previous step are passed back to the python script and can be handled accordingly.
+* Steps 1 through 4 are repeated until the end of the Python script.
 
-### Donation flow logic and data extraction and processing 
+In practice, a Python script for a data donation study typically follows the following steps: 
 
-The data donation flow and data extractation process is fully controlled by a Python script that runs locally in the browser of the participant.
-A Python script is written specifically for a research project, as it contains custom donation flow logic and is tailored to the DDP of interest to only extract the information that is of interest.
-To make this possible, Port makes use of [Pyodide](https://pyodide.org/en/stable/) a Python distribution for the browser based on WebAssembly.
-
-The Python roughly works in the following way:
-
-The script starts and begin to run synchronously, until:
-
-1. The script reaches a Python class resembling a UI element (a [React](https://reactjs.org/) component) that should be shown on screen. 
-2. The script yields and communicates with the app which UI should be rendered on screen.
-3. The participant interacts with the UI element (This is could be a prompt to submit file, a table where the participant can inspect their data, a multiple choice menu etc.).
-4. The results from the previous step are passed back to the python script and can be handled accordingly.
-
-Steps 1 through 4 are repeated until the donation is over.
-
-In practice the script follows these steps: Begin donation process, ask participant to submit a file, validate the input, extract the data you are interested in from the file, put the data in a table, render the data on screen, ask for consent prior to donation, show aend screen.
+* Begin donation process
+* ask participant to submit a file
+* validate the input
+* extract the data you are interested in from the file
+* put the data in a table
+* render the data on screen
+* ask for consent prior to donation
+* show an end screen
 
 The benefit of having a python script running inside the browser is that the researcher has familar tools, to design the extraction process in such a way that the privacy of the participants is preserved as much as possible, the researcher can make use of two important features. First, besides extracting data from the DDP, it is also possible to further process this to better match the research question. 
 
-**Insert plaatje raw GSLH versus aggregate**
+![The left side shows an example of a location visit in the Google Semantic Location History (GSLH) Data Download Package (DDP). The right side shows how this DDP was processed into a frequency table presenting the distance and duration per activitiy type per month. \label{fig:gslh}](GSLH_example.jpg)
 
 Second, you can allow an interaction between the participant and the DDP, as such that the participant can give more meaning to the data. 
 
@@ -151,6 +138,23 @@ These options can particularly be useful if you are working with very sensitive 
 Custom UI elements can be defined that make other interactions or visualizations possible.
 
 **Niek, volgens mij was het iets dat de data in een pandas dataframe werd gestopt en zo kon laten zien, kun jij hier meer over vertellen? En ook hoe een visualisatie van evt een histogram oid zou werken?**
+
+### Study information 
+
+Data donation is often part of a larger study design, in which researchers inform participants about the study purpose, ask for informed consent and potentially also include other approaches for data collection, such as a questionnaire. 
+
+Important for the data donation element are the explanations regarding data requests and data downloads at the platforms of interest, information regarding privacy and contact and all the communication that guides participants through the data donation procedure that is present on the website. 
+
+The researcher can tailor all this information towards the level of their intended study population, and the platform(s) under study.
+
+**Niek, kun je hier iets zeggen over hoe je teksten kunt aanpassen? En misschien ook over hoe je naar losse documenten kunt linken?**
+
+Almost all text related to the data donation flow (such as header texts, table texts, button texts, etc.) can be easily tailored by the researcher from within the data extraction and processing script. 
+Two language are supported by default, but this could be extented to multiple. 
+Also there is room for linking to external resources such as: download instructions, support and a privacy statement.
+Some texts need to be changed by directly altering html (such as the informed consent form). 
+This will most likely be subject to change, and be covered by a method of configuration.
+
 
 
 ### Data storage
