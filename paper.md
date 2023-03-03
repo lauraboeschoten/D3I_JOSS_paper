@@ -96,21 +96,42 @@ The researcher can tailor all this information towards the level of their intend
 
 **Niek, kun je hier iets zeggen over hoe je teksten kunt aanpassen? En misschien ook over hoe je naar losse documenten kunt linken?**
 
+Almost all text related to the data donation flow (such as header texts, table texts, button texts, etc.) can be easily tailored by the researcher from within the data extraction and processing script. 
+Two language are supported by default, but this could be extented to multiple. 
+Also there is room for linking to external resources such as: download instructions, support and a privacy statement.
+Some texts need to be changed by directly altering html (such as the informed consent form). 
+This will most likely be subject to change, and be covered by a method of configuration.
+
 
 ### The Data Download Package(s)
 
-D3I is platform agnostic, DDPs of any platform can be used. It is also possible to incorporate donations of DDPs from multiple platforms. In that case, the researcher considers the order in which the platforms are presented, and a `skip` button can be placed, for example for participants who wish to not participate for the first platform, but does want to participate for the second.
+D3I is platform agnostic, DDPs of any platform can be used. It is also possible to incorporate donations of DDPs from multiple platforms. In that case, the researcher considers the order in which the platforms are presented, and a `skip` button can be placed, for example for participants who wish to not participate for the first platform, but who do want to participate for the second.
 
 **Niek, kun je hier iets zeggen over hoe je dus extra instances van donatieschermen aan kunt maken?**
+**Antwoord: kom in het stukje Data extraction and processing, heb het kopje aangepast**
 
+The researcher can ask the participant for as many DDPs as they desire, however, this increases the burden on the participant significantly and should be done with careful consideration.
 
-### Data extraction and processing 
+### Donation flow logic and data extraction and processing 
 
-To only extract from the DDP the features that are of interest to the research, D3I makes use of Pyodide. This allows us to run Python in the web-browser of the participant. A Python script is then written specifically for this research question, as it is tailored to the DDP of interest, and extracts only the data required for the specific research question.
+The data donation flow and data extractation process is fully controlled by a Python script that runs locally in the browser of the participant.
+A Python script is written specifically for a research project, as it contains custom donation flow logic and is tailored to the DDP of interest to only extract the information that is of interest.
+To make this possible, Port makes use of [Pyodide](https://pyodide.org/en/stable/) a Python distribution for the browser based on WebAssembly.
 
-**Niek, wil je hier nog meer aan toevoegen? Zie ook https://www.sciencedirect.com/science/article/pii/S2666389922000174 ik weet niet of er sindsdien veel veranderd is?**
+The Python roughly works in the following way:
 
-To design a Python extraction script in such a way that the privacy of the participants is preserved as much as possible, the researcher can make use of two important features. First, besides extracting data from the DDP, it is also possible to further process this to better match the research question. 
+The script starts and begin to run synchronously, until:
+
+1. The script reaches a Python class resembling a UI element (a [React](https://reactjs.org/) component) that should be shown on screen. 
+2. The script yields and communicates with the app which UI should be rendered on screen.
+3. The participant interacts with the UI element (This is could be a prompt to submit file, a table where the participant can inspect their data, a multiple choice menu etc.).
+4. The results from the previous step are passed back to the python script and can be handled accordingly.
+
+Steps 1 through 4 are repeated until the donation is over.
+
+In practice the script follows these steps: Begin donation process, ask participant to submit a file, validate the input, extract the data you are interested in from the file, put the data in a table, render the data on screen, ask for consent prior to donation, show aend screen.
+
+The benefit of having a python script running inside the browser is that the researcher has familar tools, to design the extraction process in such a way that the privacy of the participants is preserved as much as possible, the researcher can make use of two important features. First, besides extracting data from the DDP, it is also possible to further process this to better match the research question. 
 
 **Insert plaatje raw GSLH versus aggregate**
 
@@ -121,11 +142,15 @@ Second, you can allow an interaction between the participant and the DDP, as suc
 
 ### Data visualization 
 
-After data extraction and potential further processing, the data is shown on screen to the participants, as such that they can inspect it prior to donation. 
+After data extraction and potential further processing, the data is shown on screen for the participants to review, prior to the actual donation. 
+This is done to give participant insight into what is being shared, and cloud also allow for more autonomy over what data is shared exactly.
+
+The app ships with a table that allows participants to remove individual rows prior to donation, or to even allow for tables to be removed completely. 
+These options can particularly be useful if you are working with very sensitive data, such as raw private messages. 
+
+Custom UI elements can be defined that make other interactions or visualizations possible.
 
 **Niek, volgens mij was het iets dat de data in een pandas dataframe werd gestopt en zo kon laten zien, kun jij hier meer over vertellen? En ook hoe een visualisatie van evt een histogram oid zou werken?**
-
-The participant can have more autonomy over what data is shared exactly, by allowing them to remove individual rows from a table, or to even allow for tables to be removed completely. These options can particularly be useful if you are working with very sensitive data, such as raw private messages. 
 
 
 ### Data storage
