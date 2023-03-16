@@ -73,7 +73,7 @@ An alternative approach to gain access to digital traces is enabled thanks to th
 
 This allows researchers to invite participants to share their DDPs. A major challenge is however that DDPs potentially contain very sensitive data, and often not all data is needed to answer the specific research question under investigation. To circumvent these challenges, @boeschoten2022framework developed an alternative workflow:  First, the research participant requests their personal DDP at the platform of interest. Second, they download in onto their own personal device. Third, by means of local processing, only the features of interest to the researcher are extracted from that DDP. Fourth, the participant inspects the extracted features after which they can consent (or decline) to donate. Only after providing this consent, the donated data is sent to a server which can be accessed by the researcher for further analyses. See \autoref{fig:workflow} for an overview of these steps.
 
-![An overview of the data donation workflow as presented by @boeschoten2022framework.\label{fig:workflow}](figure_workflow.jpg)
+![Figure 1: An overview of the data donation workflow as presented by @boeschoten2022framework.\label{fig:workflow}](figure_workflow.jpg)
 
 In the last years, researchers have used multiple approaches to deal with the privacy issues related to donation of DDPs. For example, @van2022promises requested participants to share their complete Instagram DDPs, which were immediately de-identified prior to further analyses [@boeschoten2021automatic]. @kmetty2022your requested participants to visit a research site, where they downloaded their DDPs which were then de-identified under the participant's supervision. @araujo2022osd2f developed software that allows for the participants to decide per data instance within a DDP whether they want to delete it prior to donation. @boeschoten2022privacy introduced a proof-of-concept of the software PORT, allowing for local processing of DDPs which results in aggregated, de-identified data. 
 
@@ -118,11 +118,11 @@ In practice, a Python script for a data donation study typically follows the fol
 * ask for consent prior to donation
 * show an end screen
 
-The benefit of having a python script running inside the browser is that the researcher has familar tools, to design the extraction process in such a way that the privacy of the participants is preserved as much as possible, the researcher can make use of two important features. First, besides extracting data from the DDP, it is also possible to further process this to better match the research question. 
+The benefit of having a python script running inside the browser is that the researcher has familar tools, to design the extraction process in such a way that the privacy of the participants is preserved as much as possible, the researcher can make use of two important features. First, besides extracting data from the DDP, it is also possible to further process this to better match the research question. Figure 2 shows an example where raw Google Semantic Location History (GSLH) data is locally processed in such a way that only the duration and distance of the various activities tracked by GSLH per month are extracted. 
 
-![The left side shows an example of a location visit in the Google Semantic Location History (GSLH) Data Download Package (DDP). The right side shows how this DDP was processed into a frequency table presenting the distance and duration per activitiy type per month. \label{fig:gslh}](GSLH_example.jpg)
+![Figure 2: The left side shows an example of a location visit in the Google Semantic Location History (GSLH) Data Download Package (DDP). The right side shows how this DDP was processed into a frequency table presenting the distance and duration per activitiy type per month. \label{fig:gslh}](GSLH_example.jpg)
 
-Second, you can allow an interaction between the participant and the DDP, as such that the participant can give more meaning to the data. 
+Second, you can allow an interaction between the participant and the DDP, as such that the participant can give more meaning to the data. Figure 3 shows an example using a DDP of a WhatsApp group chat. Here, the Python script is works in such a way that the names of all people in the chat are extracted first. These are then presented to the research participant as such that they can select their own name. This functionality has for example been used to identify the place of the participant within their WhatsApp network, or to allow to only extract the written messages from the research participant and discard the messages from all other in this group chat. In both examples, this functionality allows to preserve the privacy of the people in the group chat other than the research participant. 
 
 **Insert plaatje Whatsap radio buttons**
 
@@ -134,6 +134,8 @@ This is done to give participant insight into what is being shared, and cloud al
 
 The app ships with a table that allows participants to remove individual rows prior to donation, or to even allow for tables to be removed completely. 
 These options can particularly be useful if you are working with very sensitive data, such as raw private messages. 
+
+**Insert een plaatje waarin je delete knop kunt zien in een tabel** 
 
 Custom UI elements can be defined that make other interactions or visualizations possible.
 
