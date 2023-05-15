@@ -1,5 +1,5 @@
 ---
-title: 'D3I: A software tool for digital data donation'
+title: 'Port: A software tool for digital data donation'
 tags:
 - data donation
 - digital trace data
@@ -16,7 +16,7 @@ authors:
 - name: Niek C. de Schipper
   orcid: "0000-0000-0000-0000"
   affiliation: 2
-- name: Adri\"enne M. Mendrik
+- name: Adriënne M. Mendrik
   orcid: "0000-0000-0000-0000"
   affiliation: 3
 - name: Emiel van der Veen
@@ -50,7 +50,7 @@ Recently, a new workflow was introduced that allows researchers to partner with 
 
 This *data donation workflow* consists of the following steps: First the participant requests a digital copy of their personal data at the platform of interest, i.e., their *Data Download Package* (DDP). Second, they download it onto their personal device. Third, by means of *local processing*, only the data points of interest to the researcher are extracted from that DDP. Fourth, the participant inspects the extracted features after which they can consent to donate. Only after providing this consent, the donated data is sent to a server which can be accessed by the researcher for further analyses. 
 
-In this paper, we introduce PORT. PORT is a software tool that allows researchers to configure the local processing step of the data donation workflow, allowing the researcher to collect exactly the digital traces needed to answer their research question. When using PORT, a researcher can decide: 
+In this paper, we introduce Port. Port is a software tool that allows researchers to configure the local processing step of the data donation workflow, allowing the researcher to collect exactly the digital traces needed to answer their research question. When using Port, a researcher can decide: 
 
 - Which digital platforms are investigated?
 - Which digital traces are collected?
@@ -62,34 +62,34 @@ In this paper, we introduce PORT. PORT is a software tool that allows researcher
 
 *A Statement of need section that clearly illustrates the research purpose of the software and places it in the context of related work.*
 
-In our everyday lives, we leave more and more digital traces behind. Whether we like a post on Instagram, or send a message on WhatsApp. Even when we check-in at public transportation, or when we do a bank transaction we leave behind a digital trace. The promise of digital humanities and computational social science has been that researchers can utilize these digital traces to study human behavior and interaction at an unprecendented level of detail [@king2011ensuring]. 
+In our everyday lives, we leave more and more digital traces behind. Whether we like a post on Instagram, or send a message on WhatsApp. Even when we check-in at public transPortation, or when we do a bank transaction we leave behind a digital trace. The promise of digital humanities and computational social science has been that researchers can utilize these digital traces to study human behavior and interaction at an unprecendented level of detail [@king2011ensuring]. 
 
 However, while the amount of digital trace data increases, most are closed off in proprietary archives of commercial corporations, with only a subset being available to a small set of elite researchers at a platform's discretion, through initiatives such as Social Science One [@king2020new]), or through increasingly restricted and opaque APIs [@bruns2019after; @freelon2018computational; @perriam2020digital].
 
-An alternative approach to gain access to digital traces is enabled thanks to the European Union's General Data Protection Regulations (GDPR) right to data access and data portability [@ausloos2019gdpr]. Thanks to this legislation, all data processing entities are required to provide citizens a digital copy of their personal data upon request in a machine-readable format, we refer to these as *Data Download Packages* (DDPs).
+An alternative approach to gain access to digital traces is enabled thanks to the European Union's General Data Protection Regulations (GDPR) right to data access and data Portability [@ausloos2019gdpr]. Thanks to this legislation, all data processing entities are required to provide citizens a digital copy of their personal data upon request in a machine-readable format, we refer to these as *Data Download Packages* (DDPs).
 
 This allows researchers to invite participants to share their DDPs. A major challenge is however that DDPs potentially contain very sensitive data, and often not all data is needed to answer the specific research question under investigation. To circumvent these challenges, @boeschoten2022framework developed an alternative workflow:  First, the research participant requests their personal DDP at the platform of interest. Second, they download it onto their own personal device. Third, by means of local processing, only the features of interest to the researcher are extracted from that DDP. Fourth, the participant inspects the extracted features after which they can consent (or decline) to donate. Only after providing this consent, the donated data is sent to a server which can be accessed by the researcher for further analyses. See \autoref{fig:workflow} for an overview of these steps.
 
 ![Figure 1: An overview of the participant's data donation flow as presented by @boeschoten2022framework.\label{fig:workflow}](figure_workflow.jpg)
 
-In the last years, researchers have used multiple approaches to deal with the privacy issues related to donation of DDPs. For example, @van2022promises requested participants to share their complete Instagram DDPs, which were immediately de-identified prior to further analyses [@boeschoten2021automatic]. @kmetty2022your requested participants to visit a research site, where they downloaded their DDPs which were then de-identified under the participant's supervision. @araujo2022osd2f developed software that allows for the participants to decide per data instance within a DDP whether they want to delete it prior to donation. @boeschoten2022privacy introduced a proof-of-concept of the software PORT, allowing for local processing of DDPs which results in aggregated, de-identified data. 
+In the last years, researchers have used multiple approaches to deal with the privacy issues related to donation of DDPs. For example, @van2022promises requested participants to share their complete Instagram DDPs, which were immediately de-identified prior to further analyses [@boeschoten2021automatic]. @kmetty2022your requested participants to visit a research site, where they downloaded their DDPs which were then de-identified under the participant's supervision. @araujo2022osd2f developed software that allows for the participants to decide per data instance within a DDP whether they want to delete it prior to donation. @boeschoten2022privacy introduced a proof-of-concept of the software Port, allowing for local processing of DDPs which results in aggregated, de-identified data. 
 
-In this paper, we introduce a new version of PORT. It is open-source and allows for researchers to fully configure their own data donation study. It creates a website that guides participants through the data donation steps. Researchers can tailor this website to the DDP of their platform of interest and process these in their desired ways. In addition to local processing, key features from OSD2F are also integrated, allowing participants to decide per data instance whether they want to exclude it from being donated. 
+In this paper, we introduce a new version of Port. It is open-source and allows for researchers to fully configure their own data donation study. It creates a website that guides participants through the data donation steps. Researchers can tailor this website to the DDP of their platform of interest and process these in their desired ways. In addition to local processing, key features from OSD2F are also integrated, allowing participants to decide per data instance whether they want to exclude it from being donated. 
 
 
 
 # Which digital platforms are investigated?
 
-PORT is a tool that allows researchers to collect digital traces through donation of DDPs. In practice, this means that PORT can be configured to process DDPs from any data controller. i.e, any legal entity that processes personal data. However, collection of digital traces through data donation using PORT can only be a viable approach for data collection if the data controller meets certain criteria. 
+Port is a tool that allows researchers to collect digital traces through donation of DDPs. In practice, this means that Port can be configured to process DDPs from any data controller. i.e, any legal entity that processes personal data. However, collection of digital traces through data donation using Port can only be a viable approach for data collection if the data controller meets certain criteria. 
 
 First, although the GDPR obliges all data controllers to share the data of individuals that they collect about them upon request in a machine readable format, they need to actually comply to this in practice in order for data donation to be possible. Second, the process to request a digital machine readable copy of one's personal data should be standardized to a certain extent such that you can provide your participants with instructions on how to do this. Third, the file format of the DDP should have a certain level of standardization as well. It is not possible to write a Python extraction script if it is unknown to the researcher where the data of interest can be found within the DDP.  
 
 
 # How are digital traces extracted? 
 
-PORT consists of two distinct elements, which are both fully controlled by a Python script that runs locally in the browser of the participant. This Python script is specifically tailored for each data donation study. The first element is the data donation study flow. This goal of this part of the Python script is to provide explanations or instructions to the participant at various steps of the flow. The second element is the data extraction process. The goal of this part is to make sure that only the digital traces that are of interest to the researcher are extracted from the DDPs.
+Port consists of two distinct elements, which are both fully controlled by a Python script that runs locally in the browser of the participant. This Python script is specifically tailored for each data donation study. The first element is the data donation study flow. This goal of this part of the Python script is to provide explanations or instructions to the participant at various steps of the flow. The second element is the data extraction process. The goal of this part is to make sure that only the digital traces that are of interest to the researcher are extracted from the DDPs.
 
-To run a custom Python script, PORT makes use of Pyodide [@pyodide_2021]. Pyodide is a Python distribution for the browser based on WebAssembly [@WebAssembly]. 
+To run a custom Python script, Port makes use of Pyodide [@pyodide_2021]. Pyodide is a Python distribution for the browser based on WebAssembly [@WebAssembly]. 
 
 Running the custom Python script using Pyodide in the browser of a participant works as follows: 
 
@@ -113,7 +113,7 @@ In practice, a Python script for a data donation study typically follows the fol
 
 ![The left side shows an example of a location visit in the Google Semantic Location History (GSLH) Data Download Package (DDP). The right side shows how this DDP was processed into a frequency table presenting the distance and duration per activitiy type per month. \label{fig:gslh}](GSLH_example.jpg)
 
-The benefit of having a python script running inside the browser is that the researcher has familiar tools to design the extraction process in such a way that the privacy of the participants is preserved as much as possible. For this purpose, the researcher can make use of two important features. First, besides extracting digital traces from the DDP, it is also possible to further process these to better match the research question. Figure 2 shows an example where raw Google Semantic Location History (GSLH) data is locally processed in such a way that only the duration and distance of the various activities tracked by GSLH per month are extracted. 
+The benefit of having a python script running inside the browser is that the researcher has familiar tools to design the extraction process in such a way that the privacy of the participants is preserved as much as possible. For this purpose, the researcher can make use of two imPortant features. First, besides extracting digital traces from the DDP, it is also possible to further process these to better match the research question. Figure 2 shows an example where raw Google Semantic Location History (GSLH) data is locally processed in such a way that only the duration and distance of the various activities tracked by GSLH per month are extracted. 
 
 ![The left image shows an example of a WhatsApp chat Data Download Package (DDP). The middle image shows how first only the usernames of the members in this chat were locally extracted. The participant can select their own username from this list. The right side shows how this DDP was processed into a frequency table presenting among other things how often the members react to each other. Here, the participant is identified, the others receive anonymous labels. Note that the output is presented in Dutch \label{fig:whatsapp}](WhatsApp_example.jpg)
 
@@ -128,7 +128,7 @@ After data extraction and potential further processing, the data is shown on scr
 
 # What is communicated to the participant?
 
-When a researcher invites participants for a data donation study, there are various they should communicate. For example, they should inform their participants about the study and its purpose in a formal consent form, they should provide a privacy policy and probably also want to provide instructions on how to request and download the DDP of interest. To communicate all this information in such a way that it is tailor to a specific data donation study, all text that is prompted on screen can be adjusted. In addition, two languages are currently supported (this can be extended), and there is room to link to external documents, which we have used in multiple studies to refer to the privacy policy and data request and download instructions. At last, PORT allows for researchers to collect paradata on their site visitors, which can be used to monitor if the information is clearly provided. 
+When a researcher invites participants for a data donation study, there are various they should communicate. For example, they should inform their participants about the study and its purpose in a formal consent form, they should provide a privacy policy and probably also want to provide instructions on how to request and download the DDP of interest. To communicate all this information in such a way that it is tailor to a specific data donation study, all text that is prompted on screen can be adjusted. In addition, two languages are currently supPorted (this can be extended), and there is room to link to external documents, which we have used in multiple studies to refer to the privacy policy and data request and download instructions. At last, Port allows for researchers to collect paradata on their site visitors, which can be used to monitor if the information is clearly provided. 
 
 
 # Acknowledgements
