@@ -28,7 +28,7 @@ authors:
 - name: Heleen Janssen
   orcid: "0000-0000-0000-0000"
   affiliation: 2
-- name: Theo B. Araujo
+- name: Theo Araujo
   orcid: "0000-0000-0000-0000"
   affiliation: 2
 bibliography: paper.bib
@@ -52,7 +52,7 @@ In this paper, we introduce Port. Port is a software tool that allows researcher
 
 - Which digital platforms are investigated;
 - Which digital traces are collected;
-- How are the extracted digital traces visually presented to the participant;
+- How the extracted digital traces are visually presented to the participant;
 - What is communicated to the participant.
 
 
@@ -126,6 +126,6 @@ Where a researcher invites participants for a data donation study, they may comm
 
 # Acknowledgements
 
-The development of Port was made possible by the [Platform Digitale Infrastructuur SSH](http://www.pdi-ssh.nl) in the Netherlands ("Digital Data Donation Infrastructure (D3I)”).
+The development of Port was partly made possible by the [Platform Digitale Infrastructuur SSH](http://www.pdi-ssh.nl) in the Netherlands ("Digital Data Donation Infrastructure (D3I)”) and in-kind contribution of Eyra Leap B.V.
 
 # References
