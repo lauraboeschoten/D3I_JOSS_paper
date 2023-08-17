@@ -6,8 +6,10 @@ tags:
 - local processing
 - pyodide
 - elixir
-date: "12 May 2023"
-output: pdf_document
+date: "11 August 2023"
+output:
+  html_document:
+    df_print: paged
 authors:
 - name: Laura Boeschoten
   orcid: "0000-0002-3536-0474"
@@ -64,9 +66,11 @@ However, while the amount of digital trace data increases, most are closed off i
 
 An alternative approach to gain access to digital traces is enabled thanks to the GDPR's right to data access and data portability [@ausloos2019gdpr]. Thanks to this legislation, all data processing entities are required to provide citizens a digital copy of their personal data upon request in, where that is appropriate, electronic form. We refer to these pieces of personal data as *Data Download Packages* (DDPs).
 
-This legislation allows researchers to invite participants to share their DDPs. A major challenge is, however, that DDPs potentially contain very sensitive data. Conversely, often not all data is needed to answer the specific research question. To tackle these challenges, @boeschoten2022framework developed an alternative workflow:  First, the participant requests their personal DDP at the platform of interest. Second, they download it onto their own personal device. Third, by means of local processing, only the features of interest to the researcher are extracted from that DDP. Fourth, the participant inspects the extracted features after which they can choose what they want to donate (or decline to donate). Only after selecting the data for donation and clicking the button *donate*, the donated data is sent to a storage location and can be accessed by the researcher. See \autoref{fig:workflow} for an overview of these steps.
+This legislation allows researchers to invite participants to share their DDPs. A major challenge is, however, that DDPs potentially contain very sensitive data. Conversely, often not all data is needed to answer the specific research question. To tackle these challenges, @boeschoten2022framework developed an alternative workflow:  First, the participant requests their personal DDP at the platform of interest. Second, they download it onto their own personal device. Third, by means of *local processing*, only the features of interest to the researcher are extracted from that DDP. Fourth, the participant inspects the extracted features after which they can choose what they want to donate (or decline to donate). Only after selecting the data for donation and clicking the button *donate*, the donated data is sent to a storage location and can be accessed by the researcher. See \autoref{fig:workflow} for an overview of these steps.
 
 ![Figure 1: An overview of the participant's data donation flow as presented by @boeschoten2022framework.\label{fig:workflow}](data_donation_flow.pdf)
+
+In recent years, researchers have implemented the local processing step in multiple ways. Studies by @van2022promises and @kmetty2022your used an approach where DDPs were donated directly, so without a local processing step taking place. However, extensive de-identification procedures were in place to guarantee participant’s privacy (see e.g. @boeschoten2021automatic). In addition, multiple apps have been developed to enable this local processing step. For example, the app OSD2F [@araujo2022osd2f] allows to select .json files within the DDP and performs certain de-identification steps prior to donation. Alternatively, the app Port [@boeschoten2022privacy] allows for more rigorous data processing, as researchers can write a custom Python script that locally performs any requested processing task. While this approach undoubtedly offers greater flexibility, it concurrently places a larger level of responsibility on the researcher. Other apps have been documented in academic literature. However, the feasibility of their reuse for researchers outside their respective institutions or for other platforms as intended is more ambiguous. Examples of such apps are Designerly Data Donation [@GomezOrtega_2021], the Data Donation Module [@Pfiffner_2022], the Social Media Donator [@Zannettou_2023] and WhatsR [@Kohne_2023].
 
 In this paper, we introduce a new version of Port. It is open-source and allows for researchers to fully configure their own data donation study. It creates an app that guides participants through the data donation steps. Researchers can tailor this app to the DDP of their platform of interest and process these in their desired ways. In addition to local processing, key features from the Open-Source Data Donation Framework (OSD2F) are also integrated, allowing participants to decide per data instance whether they want to exclude it from being donated. Note that researchers always ask permission from their own Ethical Review Boards (ERBs) and Data Protections Officers (DPOs), and that using Port does not dismiss researchers from these obligations. The purpose of Port is to enable researchers to access platform user data with a GDPR compliant approach. 
 
@@ -120,6 +124,10 @@ After data extraction and potential further processing (as for example shown in 
 # What is communicated to the participant?
 
 Where a researcher invites participants for a data donation study, they may communicate their intentions to inform the individual participants. For example, researchers can generally inform participants in a more generic privacy policy about the purpose of the study or about the instructions on how to request and download the DDP of interest. Yet, to obtain unambiguous, specific and informed consent from individual participants, a researcher’s consent form should indicate the specific purposes of the processing for which the use of a participant’s personal data is intended. To communicate this information for a specific data donation study, all text that is prompted on screen can be adjusted. Currently, two languages (Dutch and English) are supported. There is room to link to external documents, which we have used in multiple studies to refer to the privacy policy and a document with data request and download instructions. Finally, Port collects paradata such as time stamps, information on clicks and navigation during the donation process. This paradata can be used to monitor if the information provided to the participants is clear or if there are problems with particular aspects. 
+
+# Conclusion
+
+To summarize, by utilizing GDPR's right of data access, data donation is a promising new approach to collect digital trace data for research purposes. The data donation workflow as introduced by @boeschoten2022framework introduces the idea of locally processing the obtained digital traces at the device of a participant as such that only the digital traces that are of legitimate interest to the researcher are shared. The software introduced in this paper, Port, allows a research to configure a custom data donation study. The research can decide: Which digital platform to investigate, which digital traces to collect, how to present the digital traces to the participant, and what to communicate to the participant throughout this process. These functionalities make Port a generic and useful tool for any researcher interested in collecting digital traces for research purposes. 
 
 
 # Acknowledgements
